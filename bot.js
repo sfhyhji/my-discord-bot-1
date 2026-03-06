@@ -58,10 +58,10 @@ client.on('interactionCreate', async (interaction) => {
                     allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages, PermissionsBitField.Flags.ReadMessageHistory],
                 },
                 // أضف رتبة الإدارة هنا (استبدل STAFF_ROLE_ID برقم رتبة الإدارة)
-                /* {
-                    id: 'STAFF_ROLE_ID',
+                 {
+                    id: '1479311780780970146',
                     allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages],
-                } */
+                } 
             ],
         });
 
@@ -94,6 +94,7 @@ client.on('interactionCreate', async (interaction) => {
 client.login(process.env.TOKEN).catch(err => {
   console.error("❌ فشل تسجيل الدخول: " + err.message);
 });
+
 
 
 
