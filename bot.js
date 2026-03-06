@@ -1,3 +1,13 @@
+const http = require('http');
+
+// هذا الجزء مخصص لإرضاء منصة Render ومنعها من إغلاق البوت
+http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Bot is Alive!');
+}).listen(process.env.PORT || 3000, () => {
+    console.log('✅ Web Server is running for Render port binding.');
+});
+
 const { Client, GatewayIntentBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, PermissionsBitField, ChannelType } = require('discord.js');
 
 const client = new Client({
@@ -94,6 +104,7 @@ client.on('interactionCreate', async (interaction) => {
 client.login(process.env.TOKEN).catch(err => {
   console.error("❌ فشل تسجيل الدخول: " + err.message);
 });
+
 
 
 
