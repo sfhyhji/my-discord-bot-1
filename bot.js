@@ -1,34 +1,26 @@
+import discord
+from discord.ext import commands
 
-const http = require('http');
+# إعداد البوت مع الصلاحيات اللازمة
+intents = discord.Intents.default()
+intents.guilds = True
+intents.message_content = True
 
-http.createServer((req, res) => {
-  res.write("I am alive!");
-  res.end();
-}).listen(process.env.PORT || 8080);
+bot = commands.Bot(command_prefix="!", intents=intents)
 
-const { Client, GatewayIntentBits } = require('discord.js');
-
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent
-  ]
-});
-
-client.on("ready", () => {
-  console.log("البوت اشتغل!");
-});
-
-client.on("messageCreate", message => {
-  if (message.content === "ping") {
-    message.reply("pong 🏓");
-  }
-});
-
+@bot.command()
+async def ticket(ctx):
+    # إنشاء قناة جديدة باسم المستخدم
+    guild = ctx.guild
+    ticket_channel = await guild.create_text_channel(f'ticket-{ctx.author.name}')
+    
+    # رسالة تأكيد
+    await ctx.send(f"تم فتح التذكرة بنجاح في: {ticket_channel.mention}")
+    await ticket_channel.send(f"مرحباً {ctx.author.mention}، كيف يمكننا مساعدتك؟")
 
 client.login(process.env.TOKEN).catch(err => {
   console.error("❌ فشل تسجيل الدخول: " + err.message);
 });
+
 
 
