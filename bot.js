@@ -1,3 +1,10 @@
+const http = require('http');
+
+http.createServer((req, res) => {
+  res.write("I am alive!");
+  res.end();
+}).listen(process.env.PORT || 8080);
+
 const { Client, GatewayIntentBits } = require('discord.js');
 
 const client = new Client({
@@ -18,4 +25,5 @@ client.on("messageCreate", message => {
   }
 });
 
-client.login("MTIzNTI1MTQyMTczODMwMzU5OA.GX6h5b.bXSu8OCrQD803oLoTP_m2O-ox-VIInPl2l3PGU");
+
+client.login(process.env.TOKEN);
