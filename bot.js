@@ -17,7 +17,7 @@ const client = new Client({
 });
 
 const PREFIX = "!"; // يمكنك تغيير البريفكس هنا
-const STAFF_ROLE_ID = "ضع_هنا_ID_رتبة_الادارة"; // هام جداً لكي ترى الإدارة التذاكر
+const STAFF_ROLE_ID = "1479311780780970146"; // هام جداً لكي ترى الإدارة التذاكر
 
 client.once('ready', () => {
     console.log(`✅ سجل الدخول بنجاح باسم: ${client.user.tag}`);
@@ -103,3 +103,4 @@ client.on('interactionCreate', async (interaction) => {
 
 // 5. تسجيل الدخول باستخدام التوكن من Environment Variables
 client.login(process.env.TOKEN);
+
